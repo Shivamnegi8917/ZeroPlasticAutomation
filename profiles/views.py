@@ -40,12 +40,13 @@ def signup(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user)
             })
-            user.email_user(subject, message)
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(
-                subject, message, to=[to_email]
-            )
-            email.send()
+            # user.email_user(subject, message)
+            # to_email = form.cleaned_data.get('email')
+            # email = EmailMessage(
+            #     subject, message, to=[to_email]
+            # )
+            # email.send()
+            print(message);
             return redirect('profiles:account-activation-sent')
     else:
         form = SignUpForm()
@@ -72,8 +73,12 @@ def account_activate(request, uidb64, token):
         user.is_active = True
         user.profile.email_confirmed = True
         user.save()
+        content = {
+            "messages":"You are now Logged in"
+        }
         login(request, user)
-        return redirect('users:dashboard')
+        
+        return render(request, 'app/dashboard.html', content)
     else:
         return render(request, 'registration/account_activation_invalid.html')
 
