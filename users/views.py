@@ -5,6 +5,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm,ShopDetailsForm
 from users import charts
+from .apps import UsersConfig
+from keras.preprocessing import image
+import numpy as np
+import os 
 
 def signup_view(request):
 	if request.user.is_authenticated:
@@ -80,5 +84,15 @@ def shop_details_view(request):
 	form = ShopDetailsForm()
 	return render(request,'app/shop_details.html',{'form':form})
 
-
-
+def sastakaam(request):
+	model = UsersConfig.MODEL
+	img_path = os.path.join(os.path.dirname(UsersConfig.BASE_PATH), 'something.png')
+	img = image.load_img(img_path, target_size=(300, 300))
+	img = image.img_to_array(img, dtype=np.uint8)
+	img=np.array(img)/255.0
+	p = model.predict(img[np.newaxis, ...])
+	x = np.max(p[0], axis=-1) 
+	print("Maximum Probability: ", x)
+	# predicted_class = labels[np.argmax(p[0], axis=-1)]
+	# print("Classified:",predicted_class)
+	return render(request, 'app/mlscript.html', {'paisa': x})
