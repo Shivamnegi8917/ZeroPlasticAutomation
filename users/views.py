@@ -1,10 +1,12 @@
+import csv
+import pandas as pd
+from collections import defaultdict
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
-from .forms import SignUpForm
+from .forms import SignUpForm,ShopDetailsForm
 
 def signup_view(request):
 	if request.user.is_authenticated:
@@ -28,10 +30,49 @@ def signup_view(request):
 
 @login_required
 def dashboard_view(request):
-	return render(request, 'app/dashboard.html')
+	df = pd.read_csv('data.csv')
+	data = defaultdict(lambda:0)
+	line_data = defaultdict(list)
+	values = []
+	shopnames = list(set(df['ShopName']))
+	for ind in df.index:
+		line_data[df['ShopName'][ind]].append(df['Quantity'][ind])
+		data[df['ShopName'][ind]]+=df['Quantity'][ind]
+	n = 0
+	for i in line_data:
+		n = max(n,len(line_data[i]))
+	for i in line_data:
+		line_data[i] = line_data[i]+[0]*(n-len(line_data[i]))
+	print(line_data)
+	for i in shopnames:
+		values.append(data[i])
+	pie_data = []
+	for i in data:
+		temp = {}
+		temp['name'] = i
+		temp['y'] = data[i]
+		pie_data.append(temp)
+	pie_data[0]['sliced'] = 1
+	pie_data[0]['selected'] = 1
+	line_chart = []
+	for i in line_data:
+		temp = {}
+		temp['name'] = i
+		temp['data'] = line_data[i]
+		line_chart.append(temp)
+	content = {'pie_data':pie_data,'values':values,'line_chart':line_chart}
+	print(line_chart)
+	return render(request, 'app/dashboard.html',content)
 
 def rewards_view(request):
 	return render(request, 'app/rewards.html')
 
 def home_view(request):
 	return render(request, 'app/home.html')
+
+def shop_details_view(request):
+	form = ShopDetailsForm()
+	return render(request,'app/shop_details.html',{'form':form})
+
+
+

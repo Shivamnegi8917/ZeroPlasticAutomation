@@ -1,0 +1,101 @@
+,ShopName,Product,Plastic-Type,Quantity,Status,Manager
+0,Starbuck,cups,High-Density Polyethylene,80,used,James Kaiser
+1,Acer,plastic coverings,High-Density Polyethylene,62,used,Matthew Parsons
+2,Addidas,polybags,Low-Density Polyethylene,23,recycled,Jared King
+3,Acer,straws,Polypropylene,71,recycled,Amanda Wilson
+4,Nike,cups,Polyvinyl Chloride,84,used,Amanda Perez
+5,Energy Store,polybags,Polypropylene,8,used,Larry Thomas
+6,Microsoft,straws,Polyethylene Terephthalate,92,bought,Daniel Perez
+7,Keventors,polybags,Polyethylene Terephthalate,10,recycled,Brianna Simmons
+8,Acer,straws,Low-Density Polyethylene,35,recycled,Chad Moore
+9,Nike,plastic coverings,Polypropylene,62,recycled,David Conner
+10,Google,plastic coverings,Low-Density Polyethylene,85,bought,Pamela Simmons
+11,Nike,polybags,Polypropylene,88,bought,Jennifer Williams
+12,Starbuck,polybags,Low-Density Polyethylene,23,used,Melanie Gregory
+13,Google,polybags,High-Density Polyethylene,19,bought,David Russell
+14,Google,cups,Polyethylene Terephthalate,58,recycled,Wanda Huang
+15,Starbuck,polybags,Low-Density Polyethylene,28,bought,Brian Hardy
+16,Starbuck,polybags,Polyethylene Terephthalate,37,used,Amber Smith
+17,Energy Store,cups,Polypropylene,58,bought,Stacey Baxter
+18,Nike,cups,Polyethylene Terephthalate,48,recycled,Robyn Harris
+19,Acer,polybags,Polyvinyl Chloride,57,bought,Susan Parker
+20,Google,cups,Polyvinyl Chloride,11,used,Veronica Lucas
+21,Microsoft,polybags,Polypropylene,56,recycled,Larry Washington
+22,Microsoft,plastic coverings,Polyethylene Terephthalate,93,bought,Matthew Mitchell
+23,Addidas,plastic coverings,Low-Density Polyethylene,59,recycled,Alyssa Delacruz
+24,Nike,straws,Polyethylene Terephthalate,61,bought,Tara Mitchell
+25,Microsoft,polybags,Polypropylene,15,declined,Robert Mayo DDS
+26,Google,straws,High-Density Polyethylene,12,recycled,Ashley Brock
+27,Nike,cups,Polypropylene,93,declined,Tara Matthews
+28,Google,polybags,Polyethylene Terephthalate,54,bought,William Williams
+29,Nike,plastic coverings,Polyethylene Terephthalate,3,declined,Anna Lopez
+30,Acer,plastic coverings,Low-Density Polyethylene,95,declined,Bryan Hurley
+31,Nike,cups,Low-Density Polyethylene,11,bought,Melissa Cunningham
+32,Microsoft,plastic coverings,Polyvinyl Chloride,93,bought,Cristina Gibson
+33,Google,cups,Low-Density Polyethylene,58,declined,Jonathan Soto
+34,Google,plastic coverings,Polyethylene Terephthalate,83,bought,Jessica Jones
+35,Addidas,straws,Polyethylene Terephthalate,80,used,Frederick Boyd
+36,Starbuck,plastic coverings,Polyethylene Terephthalate,66,declined,Melissa Gomez
+37,Microsoft,polybags,Low-Density Polyethylene,69,used,Benjamin Campbell
+38,Addidas,plastic coverings,High-Density Polyethylene,57,recycled,Stephanie Mcbride
+39,Nike,cups,Low-Density Polyethylene,53,recycled,William Atkins
+40,Google,plastic coverings,Polyethylene Terephthalate,60,bought,Justin Pineda
+41,Starbuck,straws,Polyvinyl Chloride,95,recycled,Michael Orr
+42,Addidas,polybags,Polyvinyl Chloride,42,used,Dr. Megan Hughes
+43,Addidas,straws,Polyethylene Terephthalate,70,declined,Matthew Lee
+44,Starbuck,straws,High-Density Polyethylene,99,declined,Lisa Perez
+45,Google,polybags,Polypropylene,73,used,Darrell Jackson
+46,Acer,cups,High-Density Polyethylene,72,recycled,Timothy Maldonado
+47,Energy Store,plastic coverings,Low-Density Polyethylene,6,recycled,Jerry Mason
+48,Microsoft,polybags,High-Density Polyethylene,3,used,Bobby Romero
+49,Nike,straws,Polyethylene Terephthalate,41,declined,Gregory Arnold
+50,Starbuck,polybags,Polyethylene Terephthalate,12,recycled,Jerry Walker
+51,Microsoft,straws,Polyvinyl Chloride,67,declined,Debbie Dean
+52,Google,cups,Polyethylene Terephthalate,47,recycled,Melissa Thomas
+53,Microsoft,plastic coverings,Polyvinyl Chloride,21,used,Angelica Webb
+54,Nike,plastic coverings,Polyethylene Terephthalate,64,declined,Timothy Richardson
+55,Addidas,cups,Polyethylene Terephthalate,12,bought,Charles Lewis
+56,Microsoft,plastic coverings,Low-Density Polyethylene,91,bought,Amanda Thornton
+57,Energy Store,plastic coverings,Polyvinyl Chloride,93,used,David Olson
+58,Nike,polybags,High-Density Polyethylene,10,declined,Theresa Adams
+59,Microsoft,straws,Low-Density Polyethylene,49,bought,Sharon Welch
+60,Nike,plastic coverings,Polypropylene,51,recycled,Henry Moore
+61,Microsoft,polybags,Low-Density Polyethylene,46,declined,Jasmine Jennings
+62,Starbuck,straws,Polyvinyl Chloride,15,recycled,Michelle Mccarty
+63,Google,straws,Polyethylene Terephthalate,15,used,Crystal Johnson
+64,Acer,cups,Polyvinyl Chloride,29,declined,Karen Floyd
+65,Energy Store,cups,High-Density Polyethylene,80,declined,Michael Nelson
+66,Microsoft,plastic coverings,Polyethylene Terephthalate,59,used,Caitlin Johnson
+67,Addidas,plastic coverings,Polypropylene,39,recycled,Frank Ferguson
+68,Microsoft,polybags,High-Density Polyethylene,67,declined,Tracy Campbell
+69,Energy Store,plastic coverings,Polypropylene,32,declined,Nancy Dalton
+70,Nike,plastic coverings,Low-Density Polyethylene,90,bought,Jacob Morris
+71,Starbuck,polybags,High-Density Polyethylene,99,recycled,Sean Mercer
+72,Energy Store,plastic coverings,Low-Density Polyethylene,12,used,Tanya Shaw
+73,Energy Store,plastic coverings,Polyethylene Terephthalate,87,bought,Amanda Clark
+74,Microsoft,plastic coverings,High-Density Polyethylene,75,declined,David Brown
+75,Starbuck,cups,Low-Density Polyethylene,18,recycled,Lindsay Lewis
+76,Nike,cups,Polypropylene,26,recycled,Valerie Molina
+77,Keventors,polybags,Polypropylene,82,declined,Karina Todd MD
+78,Microsoft,straws,High-Density Polyethylene,26,bought,James Black
+79,Addidas,plastic coverings,Polypropylene,68,used,Christina Mills
+80,Nike,polybags,Polyethylene Terephthalate,8,bought,Bryan Hill
+81,Addidas,cups,Low-Density Polyethylene,58,bought,Scott Murphy
+82,Energy Store,cups,Polyethylene Terephthalate,58,recycled,Jonathan Williams
+83,Keventors,cups,Polypropylene,19,recycled,Angel Nichols
+84,Microsoft,cups,Polyethylene Terephthalate,95,bought,Evan Hamilton
+85,Keventors,plastic coverings,Low-Density Polyethylene,58,used,Richard Gonzalez
+86,Acer,plastic coverings,High-Density Polyethylene,44,used,William Parrish
+87,Microsoft,polybags,Polyvinyl Chloride,16,recycled,Kyle Thompson
+88,Addidas,polybags,Polypropylene,63,declined,Courtney Smith
+89,Addidas,plastic coverings,Polyvinyl Chloride,21,declined,Melissa Williams
+90,Starbuck,straws,High-Density Polyethylene,39,declined,James Brown
+91,Keventors,polybags,Polypropylene,81,used,Michael Mccarthy
+92,Addidas,cups,Polyvinyl Chloride,83,bought,Emily Baker
+93,Keventors,polybags,Polyvinyl Chloride,15,bought,James Garner
+94,Nike,polybags,Polypropylene,45,used,Janet Hall
+95,Microsoft,cups,Polyvinyl Chloride,1,used,Richard Thomas
+96,Starbuck,plastic coverings,High-Density Polyethylene,2,recycled,Cynthia Smith
+97,Energy Store,cups,High-Density Polyethylene,97,recycled,Cory Banks
+98,Acer,polybags,High-Density Polyethylene,59,used,John Mueller
+99,Acer,straws,Polyvinyl Chloride,98,used,Jennifer Murphy

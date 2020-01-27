@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-4">
+	<!-- Default form register -->
+	{% if not form %}
+		<h1>ashish</h1>
+	{% else %}
+	<form class="border mt-5 border-secondary text-center p-3" method="post">
+		{% csrf_token %}
+		<p class="h4 mb-4 text-secondary text-center">Sign up</p>
+
+		<!-- {{ form.as_p }} -->
+
+		{% for field in form %}
+		<p>
+			{{ field.label_tag }}
+			{{ field }}
+			<!-- {% if field.help_text %}
+			  <small style="color: grey">{{ field.help_text }}</small>
+			{% endif %} -->
+			{% for error in field.errors %}
+			  <p style="color: red">{{ error }}</p>
+			{% endfor %}
+		</p>
+		{% endfor %}
+
+		<!-- Sign up button -->
+		<a class="btn btn-secondary my-4 btn-block" type="submit">Update</a>
+
+		<!-- Social register -->
+		<p>or sign up with:</p>
+
+		<a type="button" class="light-blue-text mx-2">
+			<i class="fa fa-facebook"></i>
+		</a>
+		<a type="button" class="light-blue-text mx-2">
+			<i class="fa fa-twitter"></i>
+		</a>
+		<a type="button" class="light-blue-text mx-2">
+			<i class="fa fa-linkedin"></i>
+		</a>
+		<a type="button" class="light-blue-text mx-2">
+			<i class="fa fa-github"></i>
+		</a>
+
+		<hr>
+
+		<!-- Terms of service -->
+		<p>By clicking
+			<em>Sign up</em> you agree to our
+			<a href="" target="_blank">terms of service</a>
+		</p>
+	</form>
+	{% endif %}
+{% endblock %}

@@ -13,6 +13,18 @@
         <link type="text/css" href="{% static 'images/icons/css/font-awesome.css' %}" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
             rel='stylesheet'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/7.2.0/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts.src.js"></script>
+        <script>
+           const buttonClicked = (id) => {
+               list = ['pie_chart', 'line_chart', 'chart'];
+               for(var i=0; i < list.length;i++){
+                if(list[i] === id) document.getElementById(id).setAttribute("style", "display:block");
+                else document.getElementById(list[i]).setAttribute("style", "display:none");}
+           }
+        </script>
+  
+        
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -56,7 +68,7 @@
                                 <img src="{% static 'img/user.png' %}" class="nav-avatar" />
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Your Profile</a></li>
+                                    <li><a href="{% url 'users:shopdetails' %}">Your Profile</a></li>
                                     <li><a href="#">Edit Profile</a></li>
                                     <li><a href="#">Account Settings</a></li>
                                     <li class="divider"></li>
@@ -199,13 +211,13 @@
                                     <h3>
                                         Profit Chart</h3>
                                 </div>
+                                <div id="chart" class="graph" style="display:block"></div>
+                                <div id="pie_chart" class="graph" style="display:none"></div>
+                                <div id="line_chart" class="graph" style="display:none"></div>
+                                <button onclick=buttonClicked("pie_chart") >Pie Chart</button>
+                                <button onclick=buttonClicked("line_chart") >line Chart</button>
                                 {% block graph%}
-                                    <div class="module-body">
-                                        <div class="chart inline-legend grid">
-                                            <div id="placeholder2" class="graph" style="height: 500px">
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 {% endblock %}
                             </div>
                             
@@ -1253,5 +1265,5 @@
         <script src="{% static 'scripts/flot/jquery.flot.resize.js' %}" type="text/javascript"></script>
         <script src="{% static 'scripts/datatables/jquery.dataTables.js'%}" type="text/javascript"></script>
         <script src="{% static 'scripts/common.js'%}" type="text/javascript"></script>
-      
+        
     </body>

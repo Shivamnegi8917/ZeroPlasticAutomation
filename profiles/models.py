@@ -9,6 +9,10 @@ class Profile(models.Model):
 	location = models.CharField(max_length=30)
 	email_confirmed = models.BooleanField(default=False)
 
+	def __str__(self):
+		return str(self.user)
+	
+
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
