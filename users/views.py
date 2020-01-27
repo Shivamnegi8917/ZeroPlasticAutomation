@@ -96,12 +96,13 @@ def sastakaam(request):
 	img_path = os.path.join(initial_path, 'mldata\something.png')
 	print(model_path,img_path)
 	img = image.load_img(img_path, target_size=(300, 300))
+	target = img
+	print(target)
 	img = image.img_to_array(img, dtype=np.uint8)
 	img=np.array(img)/255.0
 	p = model.predict(img[np.newaxis, ...])
 	x = np.max(p[0], axis=-1) 
 	print("Maximum Probability: ", x)
-		
 	# predicted_class = labels[np.argmax(p[0], axis=-1)]
 	# print("Classified:",predicted_class)
-	return render(request, 'app/mlscript.html', {'paisa': x})
+	return render(request, 'app/mlscript.html', {'result': x,'target':img_path})
