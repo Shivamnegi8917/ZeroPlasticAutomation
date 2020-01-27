@@ -18,14 +18,15 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script>
-           const buttonClicked = (id) => {
-               list = ['pie_chart', 'line_chart', 'chart'];
-               for(var i=0; i < list.length;i++){
-                if(list[i] === id) document.getElementById(id).setAttribute("style", "display:block");
-                else document.getElementById(list[i]).setAttribute("style", "display:none");}
-           }
+            const buttonClicked = (id) => {
+                charts = ['bar_chart', 'polar_chart', 'pie_chart'];
+                for(var i=0; i < charts.length; i++ ){
+                    if(charts[i] === id && id !== "bar_chart" ) document.getElementById(id).setAttribute('style', 'height:50%;width:50%;margin:auto;display:block;transition:3s;');
+                    else if(charts[i] === id && id === "bar_chart") document.getElementById(id).setAttribute('style', 'height:70%;width:70%;margin:auto;display:block;transition:3s;');
+                    else document.getElementById(charts[i]).setAttribute('style', 'display:none');
+                }
+            }
         </script>
-  
         
     </head>
     <body>
@@ -213,14 +214,13 @@
                                     <h3>
                                         Profit Chart</h3>
                                 </div>
-                                <div id="chart" class="graph" style="display:block"></div>
-                                <div id="pie_chart" class="graph" style="display:none"></div>
-                                <div id="line_chart" class="graph" style="display:none"></div>
-                                <button onclick=buttonClicked("pie_chart") >Pie Chart</button>
-                                <button onclick=buttonClicked("line_chart") >line Chart</button>
-                                {% block graph%}
+                                
+                                {% block graph %}
                                    
                                 {% endblock %}
+                                <button onclick=buttonClicked("bar_chart") class="btn btn-sm btn-active" >bar Chart</button>
+                                <button onclick=buttonClicked("polar_chart") class="btn btn-sm btn-active" >polar Chart</button>
+                                <button onclick=buttonClicked("pie_chart") class="btn btn-sm btn-active" >pie Chart</button>
                             </div>
                             
                             <div class="module">

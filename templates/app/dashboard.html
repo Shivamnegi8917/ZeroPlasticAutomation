@@ -17,8 +17,18 @@
 		<!--/.Panel-->
 
 	{% endif %}
-	{% block graph%}
-	{{ bar_chart.as_html }}
+	{% block graph %}
+        <div style="height:70%;width:70%;margin:auto" id="bar_chart">
+            {{ bar_chart.as_html }}
+        </div>
+
+        <div style="height:70%;width:70%;margin:auto;display:none" id="polar_chart">
+            {{ polar_chart.as_html }}
+        </div>
+
+        <div style="height:60%;width:50%;margin:auto;display:none" id="pie_chart">
+            {{ pie_chart.as_html }}
+        </div>
 	
 
 		{% comment %} <script>
@@ -142,8 +152,8 @@
 	{% comment %} {{time_series_chart.as_html}} {% endcomment %}
 	{% comment %} {{scatter_line_chart.as_html}} {% endcomment %}
 	{% comment %} {{radar_chart.as_html}} {% endcomment %}
-	{{polar_chart.as_html}}
-	{{pie_chart.as_html}}
+	{% comment %} {{polar_chart.as_html}} {% endcomment %}
+	{% comment %} {{pie_chart.as_html}} {% endcomment %}
 	{% comment %} {{pie_chart.as_html}} {% endcomment %}
 	{% endblock %}
 {% endblock content %}
