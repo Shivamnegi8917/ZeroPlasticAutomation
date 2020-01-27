@@ -21,21 +21,20 @@
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'users:dashboard' %}">Dashboard</a>
+
             </li>
+            {% endif %}
             {% comment %} <li class="nav-item">
                 <a class="nav-link" href="{% url 'users:sign-up' %}">Sign up</a>
             </li> {% endcomment %}
+            {% if not request.user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'profiles:profile-signup' %}">SignUp</a>
             </li>
-            {% if request.user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'profiles:profile-edit' user.profile.id %}">Profile</a>
-            </li>
             {% endif %}
-
         </ul>
         <!-- Links -->
 

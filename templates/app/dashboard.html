@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_dashboard.html" %}
 
 {% block title %}
 	Dashboard
@@ -18,28 +18,8 @@
 
 	{% endif %}
 
-	<h1 class="mt-5 text-center">Welcome {{ request.user }}</h1>
-	<div class="container">
-		  <form method="post" class="text-center border border-secondary p-5">
-				{% csrf_token %}                <p>
-                    <p>
-                        <p><input id="test_input" name="test" placeholder="test_input" type="text" class="form-control"></p>
-                    </p>
-                    <p>
-                        <p><input id="test_input_2" name="test" 
-                        placeholder="test" type="text" class="form-control"></p>
-                    </p>
-                </p>
-                {% if form.errors %}
-                    <p class="text-danger">
-                        something Went Wrong 
-                    </p>
-                {% endif %}
-
-                <!-- Sign in button -->
-                <button class="btn btn-secondary btn-block my-4" type="submit">Update</button>                
-                
-            </form> 
-	</div>
+	{% block graph %}
+		<h3 class="text-center"> Sample Rendring</h3>
+	{% endblock %}
 
 {% endblock content %}
