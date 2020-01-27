@@ -18,7 +18,10 @@
 
 	{% endif %}
 	{% block graph%}
-		<script>
+	{{ bar_chart.as_html }}
+	
+
+		{% comment %} <script>
 		var str = '{{line_chart}}';
 		str = str.split("&#39;").join("'");
 		console.log(str);		
@@ -135,6 +138,12 @@
 });
 
 
-</script>
+</script> {% endcomment %}
+	{% comment %} {{time_series_chart.as_html}} {% endcomment %}
+	{% comment %} {{scatter_line_chart.as_html}} {% endcomment %}
+	{% comment %} {{radar_chart.as_html}} {% endcomment %}
+	{{polar_chart.as_html}}
+	{{pie_chart.as_html}}
+	{% comment %} {{pie_chart.as_html}} {% endcomment %}
 	{% endblock %}
 {% endblock content %}
