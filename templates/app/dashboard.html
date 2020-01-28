@@ -29,22 +29,16 @@
         <div style="height:60%;width:50%;margin:auto;display:none" id="pie_chart">
             {{ pie_chart.as_html }}
         </div>
+        
 	{% endblock %}
 
-            {% block prediction %}
-            {% if ans %}
+    
 
-                <h1> The predicted type of Garbage is <strong> {{ ans }} </strong> </h1>
-                {% if ans == 'plastic' %}
-                    <a class="btn" href="{% url 'users:plastic_processing' %}">click for further plastic processing</a>
-                {% endif %}
-            {% endif %}
-
-            {% endblock prediction%}
-
-    {% block plasticVerification%}
+    {% block plasticVerification %}
+        <a class="btn" href="{% url 'users:script_processing' %}">Click here for Garbage Test</a>
         {% comment %} {{ ans }} {% endcomment %}
-        {% comment %} <img src="{% static '{{ans}}' %}" alt="something" > {% endcomment %}
+        <div>
+        <img src="{% static 'mldata/plastic105.jpg' %}" alt="Hi!" />
         {% if result %}
             {% if result < 50 %}
                 <h1>Our Predicition is that it not plastic.( {{ result }})</h1>
@@ -52,6 +46,18 @@
                 <h1> Our Prediction is that it is plastic We are <strong>{{ result }}%<h1> sure about this.</h1>
             {% endif %}
         {% endif %}
+        </div>
     {% endblock plasticVerification %}
 
+    {% block prediction %}
+            {% if ans %}
+
+                <h1> The predicted type of Garbage is <strong> {{ ans }} </strong> </h1>
+                {% if ans == 'plastic' %}
+                    <a class="btn" href="{% url 'users:plastic_processing' %}">click for further plastic processing</a>
+                {% endif %}
+    {% endif %}
+
+    {% endblock prediction%}
+        
 {% endblock content %}

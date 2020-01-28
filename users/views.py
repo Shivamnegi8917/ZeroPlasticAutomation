@@ -112,6 +112,7 @@ def sastakaam(request):
 	x = np.max(p[0], axis=-1) 
 	print("Maximum Probability: ", x)
 	x*=100
+	x = round(x,2)
 	# predicted_class = labels[np.argmax(p[0], axis=-1)]
 	# print("Classified:",predicted_class)
 	return render(request, 'app/dashboard.html', {'result': x,'target':img_path})
@@ -161,9 +162,8 @@ def garbage(request):
 	model = load_model(model_path)
 	x = 'mldata\garbage\plastic105.jpg'
 	x = x.split('\\')
-	ans = 'mldata'+'\\'
-	ans+= x[-1]
-	# print(ans)
+	link = 'mldata'+'/'
+	link+= x[-1]
 	img_path = os.path.join(initial_path, 'mldata\garbage\plastic105.jpg')
 	# img_path = os.path.join(initial_path, 'mldata\garbage\\trash1.jpg')
 	img = image.load_img(img_path, target_size=(300, 300))
@@ -173,7 +173,8 @@ def garbage(request):
 	p = model.predict(img)
 	p = np.argmax(p)
 	ans = labels[p]
-	print(ans)
+	print(link)
 	# print(labels[np.argmax(p)])
-	return render(request, 'app/dashboard.html',{'ans':ans, 'url':ans})
+	
+	return render(request, 'app/dashboard.html',{'ans':ans, 'link':str(link)})
 

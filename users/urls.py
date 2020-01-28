@@ -11,6 +11,6 @@ urlpatterns = [
     path('rewards/', rewards_view, name='rewards'),
     path('shopdetails/',shop_details_view,name='shopdetails'),
     path('showresult/', sastakaam, name='plastic_processing' ),
-    path('garbage/', garbage, name='script processing' )
+    path('garbage/', garbage, name='script_processing' )
     
 ]
