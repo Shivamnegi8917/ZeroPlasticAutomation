@@ -1,5 +1,5 @@
 {% extends "base_dashboard.html" %}
-
+{% load static %}
 {% block title %}
 	Dashboard
 {% endblock %}
@@ -29,131 +29,29 @@
         <div style="height:60%;width:50%;margin:auto;display:none" id="pie_chart">
             {{ pie_chart.as_html }}
         </div>
-	
-
-		{% comment %} <script>
-		var str = '{{line_chart}}';
-		str = str.split("&#39;").join("'");
-		console.log(str);		
-		Highcharts.chart('chart', {
-			chart: {
-				type: 'column'
-			},
-			title: {
-				text: 'Plastic Usage in January 2020'
-			},
-			xAxis: {
-				categories: {{values}}
-			},
-			series: [{
-				name: 'Year 2019',
-				data: {{values}}
-			}]
-		});
-	</script>
-
-		
-	<script>
-  Highcharts.chart('pie_chart', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Plastic Usage in January 2020'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
-            },
-            showInLegend: true
-        }
-    },
-    series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [{'name': 'Starbuck', 'y': 613, 'sliced': true, 'selected': true}, {'name': 'Acer', 'y': 622}, {'name': 'Addidas', 'y': 675}, {'name': 'Nike', 'y': 838}, {'name': 'Energy Store', 'y': 531}, {'name': 'Microsoft', 'y': 1034}, {'name': 'Keventors', 'y': 265}, {'name': 'Google', 'y': 575}]
-    }]
-});
-</script>
-
-<script>
-	Highcharts.chart('line_chart', {
-
-    title: {
-        text: 'Plastic Usage in January 2020'
-    },
-
-    subtitle: {
-        text: 'Source: thesolarfoundation.com'
-    },
-
-    yAxis: {
-        title: {
-            text: 'Number of Employees'
-        }
-    },
-
-    xAxis: {
-        accessibility: {
-            rangeDescription: 'Range: 2010 to 2017'
-        }
-    },
-
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
-    },
-
-    plotOptions: {
-        series: {
-            label: {
-                connectorAllowed: false
-            },
-            pointStart: 2010
-        }
-    },
-    series:[{'name': 'Starbuck', 'data': [80, 23, 28, 37, 66, 95, 99, 12, 15, 99, 18, 39, 2, 0, 0, 0, 0, 0, 0]}, {'name': 'Acer', 'data': [62, 71, 35, 57, 95, 72, 29, 44, 59, 98, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {'name': 'Addidas', 'data': [23, 59, 80, 57, 42, 70, 12, 39, 68, 58, 63, 21, 83, 0, 0, 0, 0, 0, 0]}, {'name': 'Nike', 'data': [84, 62, 88, 48, 61, 93, 3, 11, 53, 41, 64, 10, 51, 90, 26, 8, 45, 0, 0]}, {'name': 'Energy Store', 'data': [8, 58, 6, 93, 80, 32, 12, 87, 58, 97, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {'name': 'Microsoft', 'data': [92, 56, 93, 15, 93, 69, 3, 67, 21, 91, 49, 46, 59, 67, 75, 26, 95, 16, 1]}, {'name': 'Keventors', 'data': [10, 82, 19, 58, 81, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {'name': 'Google', 'data': [85, 19, 58, 11, 12, 54, 58, 83, 60, 73, 47, 15, 0, 0, 0, 0, 0, 0, 0]}]
-	,
-
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }
-            }
-        }]
-    }
-
-});
-
-
-</script> {% endcomment %}
-	{% comment %} {{time_series_chart.as_html}} {% endcomment %}
-	{% comment %} {{scatter_line_chart.as_html}} {% endcomment %}
-	{% comment %} {{radar_chart.as_html}} {% endcomment %}
-	{% comment %} {{polar_chart.as_html}} {% endcomment %}
-	{% comment %} {{pie_chart.as_html}} {% endcomment %}
-	{% comment %} {{pie_chart.as_html}} {% endcomment %}
 	{% endblock %}
+
+            {% block prediction %}
+            {% if ans %}
+
+                <h1> The predicted type of Garbage is <strong> {{ ans }} </strong> </h1>
+                {% if ans == 'plastic' %}
+                    <a class="btn" href="{% url 'users:plastic_processing' %}">click for further plastic processing</a>
+                {% endif %}
+            {% endif %}
+
+            {% endblock prediction%}
+
+    {% block plasticVerification%}
+        {% comment %} {{ ans }} {% endcomment %}
+        {% comment %} <img src="{% static '{{ans}}' %}" alt="something" > {% endcomment %}
+        {% if result %}
+            {% if result < 50 %}
+                <h1>Our Predicition is that it not plastic.( {{ result }})</h1>
+            {% else %}
+                <h1> Our Prediction is that it is plastic We are <strong>{{ result }}%<h1> sure about this.</h1>
+            {% endif %}
+        {% endif %}
+    {% endblock plasticVerification %}
+
 {% endblock content %}

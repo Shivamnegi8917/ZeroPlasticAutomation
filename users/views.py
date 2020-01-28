@@ -12,7 +12,15 @@ import os
 from numpy import loadtxt
 from keras.models import load_model
 from keras.preprocessing import image
+import numpy as np
+from keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array, array_to_img
+from keras.layers import Conv2D, Flatten, MaxPooling2D, Dense
+from keras.models import Sequential
+import glob, os, random
 
+initial_path = os.path.dirname(__file__)
+base_path = os.path.join(initial_path, 'mldata\garbage')
+# print(base_path)
 def signup_view(request):
 	if request.user.is_authenticated:
 		return redirect('users:dashboard')
@@ -93,7 +101,7 @@ def sastakaam(request):
 	model = load_model(model_path)
 	print(model.summary())
 	# img_path = os.path.dirname(__file__)
-	img_path = os.path.join(initial_path, 'mldata\something.png')
+	img_path = os.path.join(initial_path, 'mldata\garbage\plastic105.jpg')
 	print(model_path,img_path)
 	img = image.load_img(img_path, target_size=(300, 300))
 	target = img
@@ -103,6 +111,69 @@ def sastakaam(request):
 	p = model.predict(img[np.newaxis, ...])
 	x = np.max(p[0], axis=-1) 
 	print("Maximum Probability: ", x)
+	x*=100
 	# predicted_class = labels[np.argmax(p[0], axis=-1)]
 	# print("Classified:",predicted_class)
-	return render(request, 'app/mlscript.html', {'result': x,'target':img_path})
+	return render(request, 'app/dashboard.html', {'result': x,'target':img_path})
+
+def garbage(request):
+	# train_datagen = ImageDataGenerator(
+    # rescale=1./255,
+    # shear_range=0.1,
+    # zoom_range=0.1,
+    # width_shift_range=0.1,
+    # height_shift_range=0.1,
+    # horizontal_flip=True,
+    # vertical_flip=True,
+    # validation_split=0.1
+	# )
+
+	# test_datagen = ImageDataGenerator(
+	# 	rescale=1./255,
+	# 	validation_split=0.1
+	# )
+
+	# train_generator = train_datagen.flow_from_directory(
+	# 	base_path,
+	# 	target_size=(300, 300),
+	# 	batch_size=16,
+	# 	class_mode='categorical',
+	# 	subset='training',
+	# 	seed=0
+	# )
+
+	# validation_generator = test_datagen.flow_from_directory(
+	# 	base_path,
+	# 	target_size=(300, 300),
+	# 	batch_size=16,
+	# 	class_mode='categorical',
+	# 	subset='validation',
+	# 	seed=0
+	# )
+
+	# labels = (train_generator.class_indices)
+	# labels = dict((v,k) for k,v in labels.items())
+
+	# print(labels)
+	labels = {0: 'cardboard', 1: 'glass', 2: 'metal', 3: 'paper', 4: 'plastic', 5: 'trash'}
+	initial_path = os.path.dirname(__file__)
+	model_path = os.path.join(initial_path, 'mldata\garbage_detector.h5')
+	model = load_model(model_path)
+	x = 'mldata\garbage\plastic105.jpg'
+	x = x.split('\\')
+	ans = 'mldata'+'\\'
+	ans+= x[-1]
+	# print(ans)
+	img_path = os.path.join(initial_path, 'mldata\garbage\plastic105.jpg')
+	# img_path = os.path.join(initial_path, 'mldata\garbage\\trash1.jpg')
+	img = image.load_img(img_path, target_size=(300, 300))
+	img = img_to_array(img, dtype=np.uint8)
+	img = np.expand_dims(img,axis=0)
+	img = np.array(img)/255.0
+	p = model.predict(img)
+	p = np.argmax(p)
+	ans = labels[p]
+	print(ans)
+	# print(labels[np.argmax(p)])
+	return render(request, 'app/dashboard.html',{'ans':ans, 'url':ans})
+
